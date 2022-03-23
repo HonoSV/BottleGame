@@ -1,5 +1,7 @@
 package cn.th.model;
 
+import java.util.*;
+
 public enum Color {
     RED("红", "RED", "#FF0000"),
     ORANGE("橙", "ORANGE", "#FFA500"),
@@ -33,5 +35,16 @@ public enum Color {
 
     public String getCode() {
         return code;
+    }
+
+    public static Deque<Color> getRandomColorStack() {
+        List<Color> colorList = new ArrayList<>();
+        Collections.addAll(colorList, Color.values());
+        Collections.shuffle(colorList);
+        ArrayDeque<Color> randomColorStack = new ArrayDeque<>();
+        for (Color each : colorList) {
+            randomColorStack.push(each);
+        }
+        return randomColorStack;
     }
 }

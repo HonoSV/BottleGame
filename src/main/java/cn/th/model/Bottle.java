@@ -55,11 +55,11 @@ public class Bottle {
     }
 
     public void pourIn(Color color) {
-        bottle.add(color);
+        bottle.push(color);
     }
 
     public boolean pourOutBySystem(Bottle target) {
-        if (isEmpty() || target.isFully() || target.willFinal(bottle.peek())) {
+        if (isEmpty() || target.isFully()) {
             return false;
         }
         target.pourIn(bottle.pop());
@@ -76,16 +76,18 @@ public class Bottle {
 
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
+        StringBuilder sb2 = new StringBuilder();
         int count = 0;
         for (Color color : bottle) {
             String colorCN = color.getCN();
-            sb.append(colorCN).append(" ");
+            sb2.append(colorCN).append(" ");
             count++;
         }
+        StringBuilder sb1 = new StringBuilder();
         for (int i = 0; i < MAX - count; i++) {
-            sb.append("口").append(" ");
+            sb1.append("口").append(" ");
         }
-        return sb.toString().trim() + "]";
+        return sb.append(sb1).append(sb2).toString().trim() + "]";
     }
 
     public static void main(String[] args) {

@@ -43,16 +43,12 @@ public class Screen {
             int tar = new Random().nextInt(realSize);
             bottleList.get(src).pourOutBySystem(bottleList.get(tar));
         }
-
-        // todo fix bug
+        int endIndex = realSize - 1;
         while (true) {
-            int endIndex = realSize - 1;
             int flag = checkShuffleFinish();
             if (flag == finalShuffleStatus) {
                 break;
             } else if (flag == notEndShuffleStatus){
-                System.out.println(this);
-                System.out.println("endIndex: " + endIndex + "\n=====\n");
                 allPourOut(endIndex);
                 endIndex--;
             } else {
@@ -104,8 +100,11 @@ public class Screen {
     }
 
     public static void main(String[] args) {
-
+        for (int i=0;i<1000;i++) {
             Screen screen = new Screen();
+            System.out.println(screen);
+            System.out.println("****************" + i + "*******************");
+        }
 
     }
 }

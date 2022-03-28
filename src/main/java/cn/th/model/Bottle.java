@@ -66,12 +66,21 @@ public class Bottle {
         return true;
     }
 
-    public boolean pourOutByUser(Bottle target) {
-        if (isEmpty() || isFinal() || target.isFully() || target.noFusion(bottle.peek())) {
-            return false;
+    // public boolean pourOutByUser(Bottle target) {
+    //     if (isEmpty() || isFinal() || target.isFully() || target.noFusion(bottle.peek())) {
+    //         return false;
+    //     }
+    //     target.pourIn(bottle.pop());
+    //     return true;
+    // }
+
+    public void pourOutByUser(Bottle target) {
+        while (true) {
+            if (isEmpty() || isFinal() || target.isFully() || target.noFusion(bottle.peek())) {
+                break;
+            }
+            target.pourIn(bottle.pop());
         }
-        target.pourIn(bottle.pop());
-        return true;
     }
 
     public String toString() {

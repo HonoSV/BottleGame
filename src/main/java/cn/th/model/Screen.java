@@ -91,6 +91,19 @@ public class Screen {
         return finalIndex;
     }
 
+    public List<Bottle> getBottleList() {
+        return bottleList;
+    }
+
+    public boolean isSuccess() {
+        int count = 0;
+        for (Bottle each : bottleList) {
+            if (each.isFinal())
+                count++;
+        }
+        return count == colorSize;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0 ; i < realSize; i++) {
